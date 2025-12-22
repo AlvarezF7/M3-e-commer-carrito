@@ -1,4 +1,3 @@
-
 //Carrito y catalogo
 
 const catalogo = [
@@ -13,18 +12,17 @@ const catalogo = [
 ];
 
 let carrito = [];
-
 const PASSWORD_MAESTRA = "1234";
 let usuarioLogueado = false;
 
-//carrito
+//-----funciones del carrito--------
 function addProducto(idProducto){
     const prod = catalogo.find(p => p.id === idProducto);
     if(prod) carrito.push({...prod}); // copia el obj  solo en el objeto
     renderizarCarrito();
 }
 
-function borrarProducto(idProducto){
+function deleteProducto(idProducto){
     const borrarProd = carrito.findIndex(p => p.id === idProducto);
     if(borrarProd >= 0)carrito.splice(borrarProd,1);
     renderizarCarrito();
@@ -45,45 +43,98 @@ function calcularTotal(codigo){
 
 }
 
-function renderizarCarrito (){
+function renderizarCarrito(){
+    const contenedor = document.getElementById('contenedorCarrito');
+    contenedor.innerHTML = ""; // limpia contenido
 
-    const tbody = getElementById('btnCarrito');
-     tbody.innerHTML= "";
+    if(carrito.length === 0){
+        contenedor.innerHTML = "<p>El carrito está vacío</p>";
+        return;
+    }
 
-     carrito.forEach(p =>{
+    const tabla = document.createElement("table");
+    tabla.classList.add("table", "table-striped");
+
+    const thead = document.createElement("thead");
+    thead.innerHTML = `
+        <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Acción</th>
+        </tr>
+    `;
+    tabla.appendChild(thead);
+
+    const tbody = document.createElement("tbody");
+    carrito.forEach(p => {
         const tr = document.createElement("tr");
-        tr.inneHTML =`
+        tr.innerHTML = `
             <td>${p.nombre}</td>
-            <td>${p.precio}</td>
-            <td>
-                <button onclick="borrarProducto(${p.id})")> Eliminar</button>
-            </td>
-            `;
-            tbody.appenChild(tr);
-});
+            <td>$${p.precio}</td>
+            <td><button class="btn btn-danger btn-sm" onclick="borrarProducto(${p.id})">Eliminar</button></td>
+        `;
+        tbody.appendChild(tr);
+    });
+    tabla.appendChild(tbody);
+    contenedor.appendChild(tabla);
 
-document.getElementById("total").textContent =
-"$"+calcularTotal("DESC15");
-    
-    //ejemplo document.querySelector("#total").textContent = "$"+ calcularTotal("DESC15");
-
-    console.log("carrito:", carrito);
+    // Total
+    let totalDiv = document.getElementById("total");
+    if(!totalDiv){
+        totalDiv = document.createElement("div");
+        totalDiv.id = "total";
+        contenedor.appendChild(totalDiv);
+    }
+    totalDiv.textContent = "Total: $" + calcularTotal("DESC15");
 }
 
+// ---- Event listener para botones "Agregar" ----
+document.addEventListener("DOMContentLoaded", () => {
+    const botonesAgregar = document.querySelectorAll(".btn-outline-success"); // crea clase solo para agregar
+    botonesAgregar.forEach((boton, index) => {
+        boton.addEventListener("click", e => {
+            e.preventDefault();
+            addProducto(index + 1); // asume mismo orden que catalogo
+        });
+    });
+
+// Botón para mostrar/ocultar carrito
+   const btnCarrito = document.getElementById('btnCarrito');
+   const contenedor = document.getElementById("contenedorCarrito");
+
+  btnCarrito.addEventListener("click", () => {
+    contenedor.classList.toggle("d-none"); // muestra u oculta el carrito
+    renderizarCarrito(); // actualiza la tabla cada vez que se abre
+  });
+});
 //LOGIN
 
-function mostrarModal(tipo){
-    
- //usa boostrap modal para abrir "login/Registro"
- //new boostrap.Modal (document.getElementById(`nodalAuth`)).show();
-}
+function iniciarSesion(){
+    const userInput = document.getElementById('user').value.trim();
+    const passInput = document.getElementById('password').value.trim();
 
-function iniciarSesion(usuario, password){
-    if (password === PASSWORD_MAESTRA){
+    if (userInput === "admin" && passInput === PASSWORD_MAESTRA){
         usuarioLogueado = true;
-        console.log("Usuario logueado:", usuario);
-        //actualiza UI( mensaje en navbar, cerrar modal,ect)
-    } else{
-        console.warn("Credenciales inválidas");
-      }
+        alert("¡Bienvenido admin!")
+        console.log("usuario y contraseña  validados");
+    
+        const modalElement = document.getElementById('loginModal');
+        const loginModal = bootstrap.Modal.getInstance(modalElement);
+        loginModal.hide();
+    }else{ alert("Clave incorrecta, Intenta nuevamente");
+        console.log("Credenciales incorrectas");
     }
+   
+    //limpia in puts
+    document.getElementById("user").value = "";
+    document.getElementById('password').value ="";
+    }
+
+
+
+// eventos del DOM
+    document.addEventListener("DOMContentLoaded", () => {
+    const btnLogin = document.getElementById("btnLogin");
+
+    btnLogin.addEventListener("click", iniciarSesion);
+});
