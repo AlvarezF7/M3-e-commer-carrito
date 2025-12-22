@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>e-commerce/producto</title>
+</head>
+<body>
+    <header>
+        <nav id="navBar" class="navbar navbar-expand-lg navbar-light ">
+            <div class="container-fluid">
+                 <h3 class="marca"><a href="./index.html"">Top Reposteras</a></h3>
+                <button id="btnBurger" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#colapsable" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>             
+        <!-- Contenido colapsable -->
+            <div class="collapse navbar-collapse" id="colapsable">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Menu
+                  </a>
+                  <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="./detalleProducto.html">Producto</a></li>
+                  <li><a class="dropdown-item" href="./catalogo.html">Catalogo</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Registrarse</a></li>
+                  </ul>
+                </li>  
+               </ul>
+        <!-- btn login register and carrito-->      
+                <div class="ms-auto">
+                    <button  class="btn btn-outline-primary" type="button">Login</button>
+                    <button id="btnCarrito" class="btn btn-warning position-relative" type="button">
+                        <img src="./assets/img/iconcar.png"  alt="carrito" class="img-fluid" style="width: 25px; height: 25px;">
+                    </button>
+                </div>
+            </div>
+            </div>
+        </nav>
+      <!--  <div id="banner" class="text-center my-">
+            <img id="imgbanner" src="./assets/img/banner.webp" alt="banner" class="img-fluid">
+        </div>
+    -->   
+    </header>
+    <section class="promotion">
+        <h2>Producto</h2>
+    </section>
+    <main class="detail">
+       <div class="detailProduct card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+            <div class="col-md-4">
+             <img src="./assets/img/boquillas1.jpg" class="img-fluid rounded-start" alt="img1">
+            </div>
+            <div class="col-md-8">
+            <article class="card-body">
+                <h4 class="card-title">Set Boquillas</h4>
+                <p class="card-text">Set de boquillas para flores 4 unid.</p>
+                <p class="card-text"><small class="text-body-secondary">Disponible en Stock</small></p>
+                <h4 class="price">$4.000</h4>
+                <a href="# carrito">
+                    <button class="btnBuy" type="button"> Agregar </button>
+                </a> 
+                <a href="./catalogo.html">
+                <button class="btnBack" type="button">Volver</button>
+                </a>
+            </article>
+            </div>
+            </div>
+        </div>
+        <!-- Carrusel-->
+        <section id="carousel" class="carousel slide" data-bs-ride="carousel">
+            <h4 class="text-center mb-3">Reseñas de nuestros clientes</h4>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <article class="coment text-center mx-auto" style="max-width: 400px;">
+                        <p>"Las espátulas de silicona son flexibles, ideales para no dejar mezcla en el molde."</p>
+                        <p class="autor">Pablo Perez</p>
+                    </article>
+                </div>
+                <div class="carousel-item">
+                    <article class="coment text-center mx-auto" style="max-width: 400px;">
+                        <p>"Excelente servicio, llegaron el mismo día."</p>
+                        <p class="autor">Maria Soto</p>
+                    </article>
+                </div>
+                <div class="carousel-item">
+                    <article class="coment text-center mx-auto" style="max-width: 400px;">
+                        <p>"El set de moldes es resistente y fácil de limpiar, 10/10."</p>
+                        <p class="autor">Rosa Godoy</p>
+                    </article>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </section>
+    </main> 
+    <footer id="foo">
+       <p> Siguenos</p>
+        <div class="social-icon">
+            <img class="iconSo" src="./assets/img/instagram.png" alt="instaLogo">
+            <img class="iconSo" src="./assets/img/wsp4.png" alt="wspLogo">
+            <img class="iconSo" src="./assets/img/faceb.png" alt="faceLogo">
+            <img class="iconSo" src="./assets/img/you.png" alt="youLogo">
+        </div>
+        <p>&copy; Top Repostero todos los derechos reservados 2025</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>
