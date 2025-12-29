@@ -56,9 +56,8 @@ const vistaActual = window.location.pathname; //muestra las card segun la pagina
 // 1- DEFINIR LAS  5 FX DE ADD CARRITO /DELETE-CARRITO /APLICAR-DESCUENTO/ CAULCULAR-TOTAL/RENDERIZA-CARRITO
 
 function addProducto(idProducto){
-    console.log("addProducto ejecutada con id:", idProducto);
+   
     const prod = data.find(p => parseInt(p.id) === idProducto);
-    console.log("producto encontrado", prod);
     if(prod) carrito.push({...prod});
     console.log("carrito actual:", carrito)
     renderizarCarrito();
@@ -69,27 +68,30 @@ function deleteProducto(idProducto){
     renderizarCarrito();
 }
 
-function descuento(codigo){ //PUEDES MARCAR UNA BANDERA POR PRODUCTO O APICAR EL DESCUENTO AL TOTAL
+function descuento(codigo){
     if (codigo === "DESC15"){
-        carrito.forEach(p => p.descuentoAplicado = true);
+        carrito.forEach(p => p.descuentoAplicado = true);   
     }
-    return 1; //sin descuento
+    return 0.85; //descuento del 15%
 }
 
 function calcularTotal (codigo) {
     const factor = descuento(codigo);
     const total = carrito.reduce((acc, p) => acc + p.precio, 0);
-    return Math.round(total* factor);
+      return Math.round(total* factor);
+    
 }
+
+
 
 function renderizarCarrito(){
 
-   document.getElementById("totalCarrito").textContent = "$" + calcularTotal("DESC15");
+   //document.getElementById("totalCarrito").textContent = "$" + calcularTotal("DESC15");
     const tbody = document.getElementById("carritoBody");  
     tbody.innerHTML = ""; 
-
-    document.getElementById("total").textContent =`
-    Total: $ ${calcularTotal("DESC15")}`;
+    
+    document.getElementById("total").textContent =`Total a pagar : $${calcularTotal("DESC15").toLocaleString("es-AR")}`;
+  
 
         carrito.forEach(item =>{
             const tr = document.createElement('tr');
@@ -108,7 +110,16 @@ function renderizarCarrito(){
              `;
              tbody.appendChild(tr);
         });
-     
+
+   //mostrar en carrito el subtotal y el descto     
+    const subtotal = carrito.reduce((acc, producto) => acc + producto.precio, 0);
+    const descuento = subtotal * 0.15;
+   
+    document.getElementById("subtotal").textContent = `Subtotal: $ ${subtotal.toLocaleString("es-AR")}`;
+    document.getElementById("descuento").textContent = `Descuento: $ ${descuento.toLocaleString("es-AR")}`;
+
+}
+
 
 //--------------------------------------------------------------------
 
@@ -161,7 +172,7 @@ function iniciarSesion(){
     
 }
 
-//Evento btn iniciar session 
+//Evento btn iniciar session  ESTE DEJO DE FUNCIONAR
     const btnLogin = document.getElementById("btnIniciarSesion");
     console.log("Botón login:", btnLogin);
     if(btnLogin) btnLogin.addEventListener("click", iniciarSesion);
@@ -169,5 +180,5 @@ function iniciarSesion(){
 
  
  
-}
+
 

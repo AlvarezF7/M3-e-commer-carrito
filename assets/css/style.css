@@ -231,4 +231,9 @@ display:flex;
     text-align: center;
     margin-top:1rem ;
 }
-
+#subtotal, #total{
+    font-weight: bold;
+}
+#total{
+    font-size: medium;
+}
