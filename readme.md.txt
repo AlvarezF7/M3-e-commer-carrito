@@ -1,14 +1,14 @@
 # M3 — E-commerce Front-End
 
 ## Descripción
-Este proyecto tiene como objetivo implementar la interfaz de una página web de E-Commerce. Para ello se utilizan distintos elementos vistos durante el Módulo 2 y modulo 3, como la barra de navegación, el listado de productos y la página de detalle.
-Es importante mencionar que en esta segunda versión del e-commerce se utilizó el framework Bootstrap y grid para lograr que el diseño sea responsive.
+Este proyecto tiene como objetivo implementar la interfaz de una página web de E-Commerce. Para ello se utilizan distintos elementos vistos durante los módulos 2 y 3,tales como  la barra de navegación, el listado de productos, la página de detalle y el carrito de compra, el cual no pierde el producto seleccionado al cambiar de la vista home al catalogo.
+Es importante mencionar que en esta segunda versión del e-commerce se utilizó el framework Bootstrap y grid para lograr un diseño responsive.
 
 
 ## Tecnologías
 - HTML5.
 - CSS3.
-- JavaScript
+- JavaScript.
 - Diseño Responsive.
 
 ## Funcionalidades
@@ -26,7 +26,7 @@ Es importante mencionar que en esta segunda versión del e-commerce se utilizó 
 ![Detalle](https://github.com/AlvarezF7/   )
 
 ## Ver Proyecto
-[Link al Proyecto](https://alvarezf7.github.io/ejercicio-e-commerce/)
+[Link al Proyecto](https://alvarezf7.github.io/M3-e-commer-carrito/)
 
 ## Autor
 Fernanda Alvarez — [Perfil Github](https://github.com/AlvarezF7)
