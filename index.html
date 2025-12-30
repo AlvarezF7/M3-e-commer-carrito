@@ -32,9 +32,11 @@
         <!-- btn login register and carrito-->      
                 <div class="ms-auto">
                     <button  class="btn btn-outline-primary" type="button" data-bs-toggle ="modal" data-bs-target="#loginModal">Login</button>
+                    <span id="usuarioLogueado"></span> 
                     <button id="btnCarrito" class="btn btn-warning position-relative" type="button" data-bs-toggle ="offcanvas" data-bs-target="#containerCarrito" aria-controls="offcanvasRight">
                         <img src="./assets/img/iconcar.png"  alt="carrito" class="img-fluid" style="width: 25px; height: 25px;">
                     </button>
+                    
                     <div id="contenedorCarrito" class="d-none"></div>
                 </div>
             </div>
@@ -46,7 +48,7 @@
     </header>
     <section class="promotion">
         <h2>Productos Destacados</h2>
-        <p>Explora nuestos productos con un 10% de descuento</p>  
+        <p>Explora nuestos productos con un 15% de descuento</p>  
     </section>
     <main>
       <div class="cardContainer" id="cardMuestra" >
@@ -69,7 +71,6 @@
             </thead>
           <tbody id="carritoBody">
             <!-- filas dinamicas-->
-          
           </tbody> 
         </table>
         <br><br>
@@ -80,7 +81,6 @@
           <p id="total"><strong></strong></p>
           <button class="btn btn-primary w-100">Comprar</button>
         </section> 
-       
             </div>
           </div>
       </div>  
@@ -145,7 +145,7 @@
               <input type="text" class="form-control" id="email" required>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Crear cuenta</button>
+              <button type="button" class="btn btn-primary" id="createAcount">Registrarse</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
                 <i class="bi bi-arrow-left"></i>Volver</button>         
             </div>

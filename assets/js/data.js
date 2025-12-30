@@ -3,14 +3,14 @@ export default [
     "id": "1",
     "producto": "Cortador de Galletas",
     "descripcion": "Set de cortadores de galletas de aluminio.",
-    "precio": 10000,
+    "precio": 11000,
     "img": "./assets/img/producto2.jpg"
   },
   {
     "id": "2",
     "producto": "Mesquinos",
     "descripcion": "Set de mesquinos de silicona.",
-    "precio": 10000,
+    "precio": 9500,
     "img": "./assets/img/espatulas.webp"
   },
   {
