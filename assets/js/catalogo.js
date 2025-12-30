@@ -124,7 +124,7 @@ function renderizarCarrito(){
     document.getElementById("descuento").textContent = `Descuento: $ ${descuento.toLocaleString("es-AR")}`;
 }
  
-//funcion modal para cambio de modales Login Sesion
+//funcion modal para cambio de modales 
 function mostrarModal(tipo) {
     let modalId;
 
@@ -165,7 +165,7 @@ function iniciarSesion(){
     if (usuario) {
         usuarioLogueado = true;
         localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
-        document.getElementById("usuarioLogueado").textContent = usuario.user;
+        document.getElementById("usuarioLogueado").textContent = `Hola, ${usuario.user}`;
         alert("¡Bienvenido " + usuario.user + "!");
         const modalElement = document.getElementById('loginModal');
         const loginModal = bootstrap.Modal.getInstance(modalElement);
@@ -182,8 +182,8 @@ function iniciarSesion(){
 function cerrarSesion() {
     usuarioLogueado = null;
     localStorage.removeItem("usuarioActivo");
-    document.getElementById("usuarioLogueado").textContent = "";
-    if (spanUsuario) spanUsuario.textContent = "";
+    document.getElementById("usuarioLogueado").textContent = " ";
+    if (spanUsuario) spanUsuario.textContent = " ";
     alert("Sesión cerrada correctamente");
     window.location.href = "index.html"; // opcional
 }

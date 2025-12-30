@@ -19,10 +19,6 @@
   color: inherit; /* hereda el color del h3 */
   cursor: pointer;
 }
-
-/*.marca a:hover {
-  text-decoration: underline;
-}*/
 #banner >#imgbanner{
  display: block;
   width: 100%;
@@ -231,4 +227,9 @@ display:flex;
 }
 .delete{
     background-color: rgba(191, 151, 238, 0.801);
+}
+#usuarioLogueado{
+    font-size: medium;
+    font-weight: bold;
+    padding: 0.5rem;
 }
