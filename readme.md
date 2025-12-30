@@ -12,10 +12,11 @@ Es importante mencionar que en esta segunda versión del e-commerce se utilizó 
 - Diseño Responsive.
 
 ## Funcionalidades
-- Flujo de navegación, clic en el boton ver de una tarjeta , redirecciona a la pagina de porducto, clic  en volver , redirecciona a la vista del catalogo.
+- Flujo de navegación, clic en el boton ver de una tarjeta , redirecciona a la pagina de porducto, clic  en volver , redirecciona
+  a la vista del catalogo.
 - Listado de productos en tarjetas creadas dinamicamente.
-- carro de compras con las funciones de agregar y eliminar productos desde las vistas de home y catalogo.
-- carro de compras calcula el descuento de un 15% en cada producto.
+- Carro de compras con las funciones de agregar y eliminar productos desde las vistas de home y catalogo.
+- Carro de compras calcula el descuento de un 15% en cada producto.
 - Boton login para iniciar sección del usuario admin.
 - Boton registrarse para crear un nuevo usuario, iniciar sesión y cerrar sesión.
 - Pagina de detalle del producto, el  botón volver, redirecciona al usuario a la pagina con la lista de los productos.
