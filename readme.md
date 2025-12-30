@@ -23,8 +23,11 @@ Es importante mencionar que en esta segunda versión del e-commerce se utilizó 
 
 
 ## Capturas
-![Home](https://github.com/AlvarezF7/  ) 
-![Detalle](https://github.com/AlvarezF7/   )
+![Home](https://github.com/AlvarezF7/M3-e-commer-carrito/blob/83a6e16966cbc0fac6d08430f764f467f0383e54/assets/img/Top-reposteros1.png) 
+
+
+![Detalle](https://github.com/AlvarezF7/M3-e-commer-carrito/blob/main/assets/img/top-reposteros2.png)
+
 
 ## Ver Proyecto
 [Link al Proyecto](https://alvarezf7.github.io/M3-e-commer-carrito/)
