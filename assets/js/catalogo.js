@@ -2,7 +2,7 @@
 import data from './data.js';
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || []; //inici el carrito desde el localstorage
-renderizarCarrito();
+
 
 
 const PASSWORD_MAESTRA = "1234";
@@ -58,7 +58,6 @@ const vistaActual = window.location.pathname; //muestra las card segun la pagina
     }
 
 function addProducto(idProducto){
-   
     const prod = data.find(p => parseInt(p.id) === idProducto);
     if(prod) carrito.push({...prod});
 
@@ -72,7 +71,6 @@ function deleteProducto(idProducto){
     if(index >= 0) carrito.splice(index,1);
 
     localStorage.setItem("carrito",JSON.stringify(carrito));
-
     renderizarCarrito();
 }
 
@@ -94,7 +92,6 @@ function renderizarCarrito(){
     tbody.innerHTML = ""; 
     
     document.getElementById("total").textContent =`Total a pagar : $${calcularTotal("DESC15").toLocaleString("es-AR")}`;
-  
 
     carrito.forEach(item =>{
         const tr = document.createElement('tr');
@@ -150,31 +147,43 @@ function mostrarModal(tipo) {
     modalBootstrap.show();
 }
 
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
 function iniciarSesion(){
     const userInput = document.getElementById('user').value.trim();
     const passInput = document.getElementById('password').value.trim();
 
-    if (userInput === "admin" && passInput === PASSWORD_MAESTRA){
-        usuarioLogueado = true;
-        alert("¡Bienvenido admin!");
-        console.log("usuario logueado: bienvenido admin", usuarioLogueado);
+    let usuario = null;
 
+    if (userInput === "admin" && passInput === PASSWORD_MAESTRA){
+        usuario = { user: userInput };
+
+    } else {
+        usuario = usuarios.find(u => u.user === userInput && u.pass === passInput);
+    }
+
+    if (usuario) {
+        usuarioLogueado = true;
+        localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
+        document.getElementById("usuarioLogueado").textContent = usuario.user;
+        alert("¡Bienvenido " + usuario.user + "!");
         const modalElement = document.getElementById('loginModal');
         const loginModal = bootstrap.Modal.getInstance(modalElement);
         loginModal.hide();
     } else {
-        alert("Clave incorrecta, intenta nuevamente");
-        console.log("Credenciales incorrectas");
+        alert("Usuario o contraseña incorrectos");
     }
 
     document.getElementById("user").value = "";
     document.getElementById('password').value = "";
 }
 
+
 function cerrarSesion() {
     usuarioLogueado = null;
     localStorage.removeItem("usuarioActivo");
     document.getElementById("usuarioLogueado").textContent = "";
+    if (spanUsuario) spanUsuario.textContent = "";
     alert("Sesión cerrada correctamente");
     window.location.href = "index.html"; // opcional
 }
@@ -188,20 +197,7 @@ const btnCerrar = document.getElementById("btnCerrarSession");
 if (btnCerrar) btnCerrar.addEventListener("click", cerrarSesion);
 
 
-// --- Cargar usuario activo al iniciar página ---
-const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
-if (usuario) {
-    usuarioLogueado = true;
-    document.getElementById("nombreUsuario").textContent = usuario.user;
-}
-
-
-
-
-
 // Funcionalidad de registrar usuarios
-const usuarios =JSON.parse(localStorage.getItem("usuarios")) || [];
-renderizarCarrito();
 
 function emailValido(email) {
     return email.includes("@") && !email.includes(" ");
@@ -232,9 +228,11 @@ function RegistrarUsuario (){
     }
 
     usuarios.push({user,pass,  mail });
-
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
     console.log("Usuarios registrados:", usuarios);
     alert("¡Usuario registrado!");
+
+   
 
     // Cerrar modal
     const modalElement = document.getElementById('modalRegistrarse');
@@ -242,7 +240,6 @@ function RegistrarUsuario (){
     modalRegistrarse.hide();
 }
 
-    
 const btnRegistarse = document.getElementById("createAcount");
     console.log("Botón registrarse:", btnRegistarse);
     if(btnRegistarse) btnRegistarse.addEventListener("click", RegistrarUsuario);
