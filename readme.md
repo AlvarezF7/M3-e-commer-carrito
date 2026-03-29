@@ -1,4 +1,4 @@
-# M3 — E-commerce Front-End
+# M3 — E-commerce Top Reposteras 
 
 ## Descripción
 Este proyecto tiene como objetivo implementar la interfaz de una página web de E-Commerce. Para ello se utilizan distintos elementos vistos durante los módulos 2 y 3,tales como  la barra de navegación, el listado de productos, la página de detalle y el carrito de compra, el cual no pierde el producto seleccionado al cambiar de la vista home al catalogo.
